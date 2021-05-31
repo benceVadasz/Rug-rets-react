@@ -40,11 +40,10 @@ const Register = () => {
             flexFlow: "column wrap",
             justifyContent: "space-between",
         },
-        headerStyle: { margin: 0 },
+        headerStyle: { margin: 0, fontFamily: "'IBM Plex Mono', monospace" },
         invalid: { color: 'red' },
         avatarStyle: { backgroundColor: "#859DF4", marginBottom: 10 },
-        button: { backgroundColor: "#859DF4" },
-        mobileButton: { backgroundColor: "#859DF4", marginTop: 30 },
+        button: { backgroundColor: "#edede9" },
         load: { position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }
     }));
     const classes = useStyles();
@@ -101,9 +100,9 @@ const Register = () => {
                         <Avatar className={classes.avatarStyle}>
                             <AddCircleOutlineOutlinedIcon />
                         </Avatar>
-                        <h2 className={classes.headerStyle}>Trait Up</h2>
-                        {!invalidEmail? <Typography variant="caption" gutterBottom>
-                            Please fill this form to create an account !
+                        <h2 className={classes.headerStyle}>Rug rets</h2>
+                        {!invalidEmail? <Typography className={classes.headerStyle} variant="caption" gutterBottom>
+                            Please fill in this form to create an account!
                         </Typography> : <Typography className={classes.invalid} variant="caption" gutterBottom>
                             Email is invalid
                         </Typography>}
@@ -114,6 +113,12 @@ const Register = () => {
                             fullWidth
                             label="Name"
                             placeholder="Enter your name"
+                            inputProps={{
+                                autocomplete: 'new-password',
+                                form: {
+                                    autocomplete: 'off',
+                                }
+                            }}
                         />
                         <TextField
                             onChange={(e) => setEmail(e.target.value)}
@@ -121,6 +126,12 @@ const Register = () => {
                             error={invalidEmail}
                             label="Email"
                             placeholder="Enter your email"
+                            inputProps={{
+                                autocomplete: 'new-password',
+                                form: {
+                                    autocomplete: 'off',
+                                },
+                            }}
                         />
                         <TextField
                             onChange={(e) => setPassword(e.target.value)}
@@ -128,6 +139,12 @@ const Register = () => {
                             label="Password"
                             type="password"
                             placeholder="Enter your password"
+                            inputProps={{
+                                autocomplete: 'new-password',
+                                form: {
+                                    autocomplete: 'off',
+                                },
+                            }}
                         />
                         <TextField
                             onChange={(e) => setConfirmPassword(e.target.value)}
@@ -135,6 +152,12 @@ const Register = () => {
                             label="Confirm Password"
                             type="password"
                             placeholder="Confirm your password"
+                            inputProps={{
+                                autocomplete: 'new-password',
+                                form: {
+                                    autocomplete: 'off',
+                                },
+                            }}
                         />
                         <Button type="submit" variant="contained" className={classes.button}>
                             Sign up
