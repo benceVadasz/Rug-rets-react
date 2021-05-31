@@ -30,11 +30,21 @@ const Navbar = () => {
             marginTop: 5,
         },
         navContainer: {
-          position: "relative"
+            position: "relative"
+        },
+        rightNav: {
+            position: 'absolute',
+            right: '3%',
+            top: '50%',
+            transform: 'translateY(-50%)',
         },
         leftNav: {
-            position: "absolute",
-            left: 50
+            display: 'flex',
+            width: '40%',
+            justifyContent: "space-around"
+        },
+        registerBtn: {
+            border: '0.5px solid black'
         }
     }));
     const classes = useStyles();
@@ -47,52 +57,56 @@ const Navbar = () => {
     return (
         <div className={classes.root}>
             <AppBar className={classes.navbarStyle} position="static">
-                <Toolbar>
-                    <Button component={Link} to="/" color="inherit">
-                        {/*<img className={classes.img} alt="complex" src={logo}/>*/}
-                    </Button>
-                    <Typography variant="h6" className={classes.title}/>
-                    <div className={classes.navContainer}>
+                <div className={classes.navContainer}>
+                    <Toolbar>
+                        <Button component={Link} to="/" color="inherit">
+                            {/*<img className={classes.img} alt="complex" src={logo}/>*/}
+                        </Button>
                         <div className={classes.leftNav}>
-                            <Button className={'lower-case'} component={Link} to="/jobs" color="inherit">
+                            <Button edge='start' className={'lower-case'} component={Link} to="/shop" color="inherit">
                                 Shop
                             </Button>
-                            <Button className={'lower-case'} component={Link} to="/jobs" color="inherit">
+                            <Button className={'lower-case'} component={Link} to="/design" color="inherit">
                                 Design
                             </Button>
-                            <Button className={'lower-case'} component={Link} to="/jobs" color="inherit">
+                            <Button className={'lower-case'} component={Link} to="/feed" color="inherit">
                                 Feed
                             </Button>
                         </div>
-                        {
-                            sessionStorage.getItem('token') ?
-                                <div className={classes.rightNav}>
-                                    <Button component={Link} to="" onClick={logOut} color="inherit">
-                                        Logout
-                                    </Button>
-                                    <IconButton
-                                        component={Link}
-                                        to="/profile"
-                                        aria-label="account of current user"
-                                        aria-controls="menu-appbar"
-                                        aria-haspopup="true"
-                                        color="inherit"
-                                    >
-                                        <AccountCircle/>
-                                    </IconButton>
-                                </div>
-                                :
-                                <div>
-                                    <Button className={'lower-case'} component={Link} to="/login" color="inherit">
-                                        Login
-                                    </Button>
-                                    <Button className={'lower-case'} component={Link} to="/register" color="inherit">
-                                        Register
-                                    </Button>
-                                </div>
-                        }
-                    </div>
-                </Toolbar>
+                        <Typography variant="h6"/>
+                        <div>
+
+                            {
+                                sessionStorage.getItem('token') ?
+                                    <div className={classes.rightNav}>
+                                        <Button component={Link} to="" onClick={logOut} color="inherit">
+                                            Logout
+                                        </Button>
+                                        <IconButton
+                                            component={Link}
+                                            to="/profile"
+                                            aria-label="account of current user"
+                                            aria-controls="menu-appbar"
+                                            aria-haspopup="true"
+                                            color="inherit"
+                                        >
+                                            <AccountCircle/>
+                                        </IconButton>
+                                    </div>
+                                    :
+                                    <div className={classes.rightNav}>
+                                        <Button className={'lower-case'} component={Link} to="/login" color="inherit">
+                                            Sign in
+                                        </Button>
+                                        <Button className={classes.registerBtn + ' lower-case'} component={Link}
+                                                to="/register" color="inherit">
+                                            Sign up
+                                        </Button>
+                                    </div>
+                            }
+                        </div>
+                    </Toolbar>
+                </div>
             </AppBar>
         </div>
     );
