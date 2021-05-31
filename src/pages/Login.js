@@ -11,7 +11,6 @@ import {
 } from "@material-ui/core";
 import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
 import { BASE_URL } from "../constants";
-import {useTheme} from '@material-ui/core/styles';
 // import Loading from "./Loading";
 
 const Login = () => {

@@ -43,7 +43,7 @@ const Register = () => {
         headerStyle: { margin: 0, fontFamily: "'IBM Plex Mono', monospace" },
         invalid: { color: 'red' },
         avatarStyle: { backgroundColor: "#859DF4", marginBottom: 10 },
-        button: { backgroundColor: "#edede9" },
+        button: { backgroundColor: "#edede9", color: 'black' },
         load: { position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }
     }));
     const classes = useStyles();
@@ -60,7 +60,7 @@ const Register = () => {
         setLoading(true);
         e.preventDefault();
         axios
-            .post(`${BASE_URL}/Trait-Up-Backend/public/api/registration`, {
+            .post(`${BASE_URL}/Rug-Rets/public/api/registration`, {
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -159,7 +159,7 @@ const Register = () => {
                                 },
                             }}
                         />
-                        <Button type="submit" variant="contained" className={classes.button}>
+                        <Button color={"primary"} type="submit" variant="contained" className={classes.button}>
                             Sign up
                         </Button>
                     </form>
