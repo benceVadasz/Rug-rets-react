@@ -45,3 +45,7 @@
   font-family: 'IBM Plex Mono', monospace !important;
   font-weight: 500 !important;
 }
+
+.white {
+  color: white !important;
+}

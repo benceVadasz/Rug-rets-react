@@ -21,7 +21,8 @@ const Design = () => {
             height: 70,
             borderRadius: 5,
             cursor: 'pointer',
-            marginBottom: 30
+            marginBottom: 30,
+            boxShadow: 'rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px'
         }
     }));
     const classes = useStyles();
@@ -35,8 +36,8 @@ const Design = () => {
     return (
         <div className={classes.colorSelector}>
             {COLORS.map((color) =>
-             (<div className={classes.color} onClick={() =>console.log(color.name)} style={{background: color.value}}>
-
+             (<div key={color.value} title={color.name} className={classes.color}
+                   onClick={() =>console.log(color.name)} style={{background: color.value}}>
              </div>)
             )}
             <AddNewColor/>
