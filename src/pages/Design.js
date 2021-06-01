@@ -3,6 +3,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import cbg from '../assets/canvas-bg.png';
 import ColorPicker from "../components/ColorPicker";
 import DesignTypeSwitcher from "../components/DesignTypeSwitcher";
+import ButtonGroup from "../components/ButtonGroup";
 
 
 const Design = () => {
@@ -37,10 +38,16 @@ const Design = () => {
         },
         colorPicker: {
             overflow: 'scroll',
+            boxShadow: '0 1em 1em -1em rgba(0, 0, 0, .25)',
             gridArea: '4 / 5 / 9 / 6'
         },
         buttonContainer: {
-            gridArea: '9 / 5 / 10 / 6'
+            margin: '0 auto',
+            width: '70%',
+            display: "flex",
+            justifyContent: 'space-around',
+            alignItems: 'center',
+            gridArea: '9 / 5 / 10 / 6',
         }
 
     }));
@@ -67,6 +74,7 @@ const Design = () => {
                 <ColorPicker/>
             </div>
             <div className={classes.buttonContainer}>
+                <ButtonGroup/>
             </div>
         </div>
     );
