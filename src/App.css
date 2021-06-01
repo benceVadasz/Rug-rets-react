@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap');
 
 .App {
   text-align: center;
@@ -43,5 +43,5 @@
   text-transform: unset !important;
   color: black !important;
   font-family: 'IBM Plex Mono', monospace !important;
-
+  font-weight: 500 !important;
 }

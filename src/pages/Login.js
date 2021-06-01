@@ -39,7 +39,7 @@ const Login = () => {
             flexFlow: "column wrap",
             justifyContent: "space-between",
         },
-        headerStyle: { margin: 0 },
+        headerStyle: { margin: 0, fontFamily: "'IBM Plex Mono', monospace" },
         avatarStyle: { backgroundColor: "#edede9",  },
         button: { backgroundColor: "#edede9" },
         passwordStyle: { marginBottom: 30 },
@@ -101,7 +101,7 @@ const Login = () => {
                             <AddCircleOutlineOutlinedIcon />
                         </Avatar>
                         <h2 className={classes.headerStyle}>Log in</h2>
-                        {!invalidCredentials ? <Typography variant="caption" gutterBottom>
+                        {!invalidCredentials ? <Typography className={classes.headerStyle} variant="caption" gutterBottom>
                             Please fill this form to log in!
                         </Typography> : <Typography className={classes.invalid} variant="caption" gutterBottom>
                             Invalid credentials
