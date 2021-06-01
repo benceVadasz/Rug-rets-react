@@ -15,7 +15,7 @@ import {useTheme} from '@material-ui/core/styles';
 // import Loading from "./Loading";
 
 const Register = () => {
-    const useStyles = makeStyles((theme) => ({
+    const useStyles = makeStyles(() => ({
         paperStyle: {
             padding: "30px 20px",
             height: 460,
@@ -114,7 +114,6 @@ const Register = () => {
                             label="Name"
                             placeholder="Enter your name"
                             inputProps={{
-                                autocomplete: 'new-password',
                                 form: {
                                     autocomplete: 'off',
                                 }
@@ -127,7 +126,6 @@ const Register = () => {
                             label="Email"
                             placeholder="Enter your email"
                             inputProps={{
-                                autocomplete: 'new-password',
                                 form: {
                                     autocomplete: 'off',
                                 },
@@ -140,7 +138,6 @@ const Register = () => {
                             type="password"
                             placeholder="Enter your password"
                             inputProps={{
-                                autocomplete: 'new-password',
                                 form: {
                                     autocomplete: 'off',
                                 },
@@ -153,7 +150,6 @@ const Register = () => {
                             type="password"
                             placeholder="Confirm your password"
                             inputProps={{
-                                autocomplete: 'new-password',
                                 form: {
                                     autocomplete: 'off',
                                 },

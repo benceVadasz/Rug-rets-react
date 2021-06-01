@@ -14,7 +14,7 @@ import { BASE_URL } from "../constants";
 // import Loading from "./Loading";
 
 const Login = () => {
-    const useStyles = makeStyles((theme) => ({
+    const useStyles = makeStyles(() => ({
         paperStyle: {
             padding: "30px 20px",
             height: 340,
