@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from 'axios';
 import {makeStyles} from '@material-ui/core/styles';
 import {
     Grid,
@@ -10,8 +9,11 @@ import {
     Button,
 } from "@material-ui/core";
 import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
-import { BASE_URL } from "../constants";
-import {useTheme} from '@material-ui/core/styles';
+import {signUp} from '../actions/auth';
+import {GoogleLogin} from "react-google-login";
+import Icon from "../assets/icon";
+import { useDispatch } from "react-redux";
+import { useHistory } from 'react-router-dom';
 // import Loading from "./Loading";
 
 const Register = () => {
@@ -50,40 +52,37 @@ const Register = () => {
     const [name, setNameState] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [loading, setLoading] = useState(false);
     const [confirmPassword, setConfirmPassword] = useState("");
-    const theme = useTheme();
+    const [loading, setLoading] = useState(false);
     const [invalidEmail, setInvalidEmail] = useState(false);
+    const dispatch = useDispatch();
+    const history = useHistory();
 
     const submit = (e) => {
-        if (password !== confirmPassword) alert("Passwords do not match");
-        setLoading(true);
         e.preventDefault();
-        axios
-            .post(`${BASE_URL}/Rug-Rets/public/api/registration`, {
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                name,
-                email,
-                password,
-            })
-            .then((response) => {
-                setLoading(false);
-                window.location.href = "/";
-            })
-            .catch((error) => {
-                if (error.response.status === 400) {
-                    setInvalidEmail(true)
-                    setLoading(false)
-                }
-            });
+        if (password !== confirmPassword) alert("Passwords do not match");
+        dispatch(signUp({name, email, password}, history))
     };
 
     const setName = (e) => {
         setNameState(e.target.value)
         setInvalidEmail(false)
     }
+    const googleSuccess = async (res) => {
+        const result = res?.profileObj;
+        const token = res?.tokenId;
+        try {
+            dispatch({ type: 'AUTH', data: { result, token } })
+            history.push('/')
+        }
+        catch (e) {
+            console.log(e)
+        }
+    };
+
+    const googleFailure = () => {
+        console.log('google sign in was unsuccessful. Please refresh and start again.')
+    };
 
     // if (loading)
     //     return (
@@ -158,6 +157,22 @@ const Register = () => {
                         <Button color={"primary"} type="submit" variant="contained" className={classes.button}>
                             Sign up
                         </Button>
+                        <GoogleLogin
+                            clientId='525017423702-622ugttvcve20rljokq90t37rdl8m4bc.apps.googleusercontent.com'
+                            render={(renderProps) => (
+                                <Button className={'lower-case white ' + classes.googleBtn} color="primary"
+                                        fullWidth onClick={renderProps.onClick}
+                                        disabled={renderProps.disabled}
+                                        startIcon={<Icon/>}
+                                        variant="contained"
+                                >
+                                    Sign up with Google
+                                </Button>
+                            )}
+                            onSuccess={googleSuccess}
+                            onFailure={googleFailure}
+                            cookiePolicy="single_host_origin"
+                        />
                     </form>
                 </Paper>
             </Grid>

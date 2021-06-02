@@ -11,14 +11,13 @@ import {
     Button,
 } from "@material-ui/core";
 import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
-import {BASE_URL} from "../constants";
+import {signIn} from '../actions/auth';
 import Icon from '../assets/icon';
 import { useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
 // import Loading from "./Loading";
 
 const Login = () => {
-    const history = useHistory();
     const useStyles = makeStyles(() => ({
         paperStyle: {
             padding: "30px 20px",
@@ -58,7 +57,7 @@ const Login = () => {
     const [loading, setLoading] = useState(false);
     const [invalidCredentials, setInvalidCredentials] = useState(false);
     const dispatch = useDispatch();
-
+    const history = useHistory();
 
     const setEmail = (e) => {
         setInvalidCredentials(false)
@@ -66,28 +65,8 @@ const Login = () => {
     }
 
     const submit = (e) => {
-        setLoading(true);
         e.preventDefault();
-        axios
-            .post(`${BASE_URL}/Trait-Up-Backend/public/api/login`, {
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                email,
-                password,
-            })
-            .then((response) => {
-
-                setLoading(false);
-                sessionStorage.setItem("user", JSON.stringify(response.data.user));
-                sessionStorage.setItem("token", response.data.token);
-            })
-            .catch((error) => {
-                if (error.response.status === 400 || error.response.status === 404) {
-                    setInvalidCredentials(true)
-                    setLoading(false)
-                }
-            });
+        dispatch(signIn({email, password}, history))
     };
 
     const googleSuccess = async (res) => {
