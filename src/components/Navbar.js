@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -7,7 +7,12 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import {Button} from '@material-ui/core';
+import {useDispatch} from "react-redux";
+import {LOGOUT} from "../constants/actionTypes";
+import { useHistory, useLocation } from 'react-router-dom';
 // import logo from '../assets/logo.png';
+
+
 
 const Navbar = () => {
     const useStyles = makeStyles((theme) => ({
@@ -45,14 +50,30 @@ const Navbar = () => {
         },
         registerBtn: {
             border: '0.5px solid black'
+        },
+        icon: {
+            color: 'black'
         }
     }));
     const classes = useStyles();
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const location = useLocation();
 
-    const logOut = () => {
-        sessionStorage.clear();
-        window.location.href = '/';
-    }
+    console.log(user)
+    useEffect(() => {
+        const token = user?.token;
+
+        setUser(JSON.parse(localStorage.getItem('profile')));
+        console.log('in navbar')
+    }, [location]);
+
+    const logout = () => {
+        dispatch({ type: LOGOUT });
+        history.push('/auth');
+        setUser(null);
+    };
 
     return (
         <div className={classes.root}>
@@ -77,9 +98,9 @@ const Navbar = () => {
                         <div>
 
                             {
-                                sessionStorage.getItem('token') ?
+                                user?.result ?
                                     <div className={classes.rightNav}>
-                                        <Button component={Link} to="" onClick={logOut} color="inherit">
+                                        <Button className=' lower-case' component={Link} to="" onClick={logout} color="inherit">
                                             Logout
                                         </Button>
                                         <IconButton
@@ -90,7 +111,7 @@ const Navbar = () => {
                                             aria-haspopup="true"
                                             color="inherit"
                                         >
-                                            <AccountCircle/>
+                                            <AccountCircle className={classes.icon}/>
                                         </IconButton>
                                     </div>
                                     :
