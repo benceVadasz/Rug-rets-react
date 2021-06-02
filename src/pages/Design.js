@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import {makeStyles} from '@material-ui/core/styles';
-import cbg from '../assets/canvas-bg.png';
 import ColorPicker from "../components/ColorPicker";
 import DesignTypeSwitcher from "../components/DesignTypeSwitcher";
 import ButtonGroup from "../components/ButtonGroup";
+import ShapePicker from "../components/ShapePicker";
 
 
 const Design = () => {
@@ -65,7 +65,7 @@ const Design = () => {
                 <DesignTypeSwitcher/>
             </div>
             <div className={classes.shapePicker}>
-                <h1>shapes</h1>
+                <ShapePicker/>
             </div>
             <div className={classes.canvas}>
                 <h1>canvas</h1>
