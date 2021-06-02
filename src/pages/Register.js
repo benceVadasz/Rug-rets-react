@@ -61,7 +61,7 @@ const Register = () => {
     const submit = (e) => {
         e.preventDefault();
         if (password !== confirmPassword) alert("Passwords do not match");
-        dispatch(signUp({name, email, password}, history))
+        dispatch(signUp({name, email, password, confirmPassword}, history))
     };
 
     const setName = (e) => {
