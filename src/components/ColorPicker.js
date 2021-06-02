@@ -4,7 +4,7 @@ import {COLORS} from '../data/colors';
 import AddNewColor from "./AddNewColor";
 
 
-const Design = () => {
+const ColorPicker = () => {
     const useStyles = makeStyles(() => ({
         colorSelector: {
             display: 'flex',
@@ -45,4 +45,4 @@ const Design = () => {
     );
 }
 
-export default Design;
+export default ColorPicker;
