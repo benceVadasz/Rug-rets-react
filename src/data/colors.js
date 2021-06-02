@@ -31,13 +31,13 @@ export const COLORS = [
     "name": "gold",
     "value": "#F4C815"
   },{
-    "name": "gold",
-    "value": "#F4C815"
+    "name": "off-white",
+    "value": "#faedcd"
   },{
-    "name": "gold",
-    "value": "#F4C815"
+    "name": "mustard",
+    "value": "#e9ff70"
   },{
-    "name": "gold",
-    "value": "#F4C815"
+    "name": "skyblue",
+    "value": "#a7bed3"
   }
 ]
