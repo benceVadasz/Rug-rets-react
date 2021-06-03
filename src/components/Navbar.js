@@ -61,12 +61,10 @@ const Navbar = () => {
     const history = useHistory();
     const location = useLocation();
 
-    console.log(user)
     useEffect(() => {
         const token = user?.token;
 
         setUser(JSON.parse(localStorage.getItem('profile')));
-        console.log('in navbar')
     }, [location]);
 
     const logout = () => {
