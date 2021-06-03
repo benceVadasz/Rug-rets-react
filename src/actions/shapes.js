@@ -1,5 +1,5 @@
-import { FETCH_ALL, CREATE, UPDATE, DELETE, LIKE } from '../constants/actionTypes';
-import * as api from '../api/shapesAPI';
+import { FETCH_ALL, CREATE } from '../constants/actionTypes';
+import * as api from '../api';
 
 export const getShapes = () => async (dispatch) => {
     try {
