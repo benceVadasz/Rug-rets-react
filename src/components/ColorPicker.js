@@ -26,6 +26,7 @@ const ColorPicker = () => {
         }
     }));
     const classes = useStyles();
+    const [colors, setColors] = useState(COLORS);
     // if (loading)
     //     return (
     //         <div className={classes.load}>
@@ -35,12 +36,12 @@ const ColorPicker = () => {
 
     return (
         <div className={classes.colorSelector}>
-            {COLORS.map((color) =>
+            {colors.map((color) =>
              (<div key={color.value} title={color.name} className={classes.color}
                    onClick={() =>console.log(color.name)} style={{background: color.value}}>
              </div>)
             )}
-            <AddNewColor/>
+            <AddNewColor addColor={setColors} colors={colors} />
         </div>
     );
 }

@@ -1,4 +1,6 @@
-export const COLORS = [
+import {colors} from "@material-ui/core";
+
+export let COLORS = [
   {
     "name": "pale leaf",
     "value": "#CCD4BF"
@@ -39,5 +41,13 @@ export const COLORS = [
   },{
     "name": "skyblue",
     "value": "#a7bed3"
+  },
+  {
+    "name": "smth",
+    "value": "#invalid"
   }
 ]
+
+export let saveColor = (name="", value) => {
+  COLORS = [...COLORS, {"name": name, "value": value}]
+}
