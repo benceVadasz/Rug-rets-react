@@ -4,6 +4,7 @@ import ColorPicker from "../components/ColorPicker";
 import DesignTypeSwitcher from "../components/DesignTypeSwitcher";
 import ButtonGroup from "../components/ButtonGroup";
 import ShapePicker from "../components/ShapePicker";
+import Canvas from "../components/Canvas";
 
 
 const Design = () => {
@@ -68,7 +69,7 @@ const Design = () => {
                 <ShapePicker/>
             </div>
             <div className={classes.canvas}>
-                <h1>canvas</h1>
+                <Canvas/>
             </div>
             <div className={classes.colorPicker}>
                 <ColorPicker/>
