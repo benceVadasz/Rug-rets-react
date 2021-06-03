@@ -4,7 +4,7 @@ import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 
 const DesignTypeSwitcher = () => {
-    const [types, setTypes] = React.useState('left');
+    const [types, setTypes] = React.useState('pre-made');
     const useStyles = makeStyles(() => ({
         switcher: {
             height: '50%',
@@ -12,8 +12,9 @@ const DesignTypeSwitcher = () => {
         }
     }));
     const classes = useStyles();
-    const handleTypes = (event, newAlignment) => {
-        setTypes(newAlignment);
+    const handleTypes = (event, newSelection) => {
+        // todo: save selection in redux store so shape picker can update
+        setTypes(newSelection);
     };
     // if (loading)
     //     return (
@@ -30,10 +31,10 @@ const DesignTypeSwitcher = () => {
             aria-label="text alignment"
             className={classes.switcher}
         >
-            <ToggleButton className='lower-case' value="left" aria-label="left aligned">
+            <ToggleButton className='lower-case' value="pre-made" aria-label="left aligned">
                 Pre-made
             </ToggleButton>
-            <ToggleButton className='lower-case' value="center" aria-label="centered">
+            <ToggleButton className='lower-case' value="custom" aria-label="centered">
                 Custom
             </ToggleButton>
 
