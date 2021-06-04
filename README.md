@@ -1,3 +1,9 @@
+# About the App
+
+Rug-Rets is an e-commerce web application that not only comes with a webshop and a forum but also lets users creates rugs of any shape and color.
+![customize](src/assets/pic.png)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
