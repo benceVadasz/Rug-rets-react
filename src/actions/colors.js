@@ -2,7 +2,7 @@ import { FETCH_ALL, CREATE, DELETE } from '../constants/actionTypes';
 
 import * as api from '../api/index.js';
 
-export const getColors = (userId) => async (dispatch) => {
+export const getColors = (userId) => async (    dispatch) => {
     try {
         const { data } = await api.fetchColors(userId);
 

@@ -4,8 +4,8 @@ import AddIcon from '@material-ui/icons/Add';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import {saveColor} from '../data/colors.js'
-import { useDispatch } from "react-redux";
-import { uploadColor } from "../actions/colors";
+import {useDispatch} from "react-redux";
+import {uploadColor} from "../actions/colors";
 
 
 const AddNewColor = ({addColor, colors}) => {
@@ -42,7 +42,16 @@ const AddNewColor = ({addColor, colors}) => {
             confirmButtonText: 'Add',
             showCancelButton: true,
         }).then((hexCode) => {
-            dispatch(uploadColor({"name": "", "value": hexCode.value, userId}))
+            const RegExp = /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i;
+            console.log(RegExp.test(hexCode.value))
+            if (hexCode?.value?.length > 0 && !RegExp.test(hexCode.value)) {
+                Swal.fire({
+                    title: 'Hex code invalid',
+                    confirmButtonText: 'Ok',
+                }).then(() => addNewColor())
+            } else {
+                if (hexCode?.value?.length > 0) dispatch(uploadColor({"name": "", "value": hexCode.value, userId}))
+            }
             // todo: ask Adam to make this work
         })
         // if (loading)
