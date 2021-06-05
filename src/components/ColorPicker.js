@@ -1,7 +1,9 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {makeStyles} from '@material-ui/core/styles';
 import {COLORS} from '../data/colors';
 import AddNewColor from "./AddNewColor";
+import {useDispatch, useSelector} from "react-redux";
+import { getColors } from "../actions/colors";
 
 
 const ColorPicker = () => {
@@ -26,13 +28,15 @@ const ColorPicker = () => {
         }
     }));
     const classes = useStyles();
-    const [colors, setColors] = useState(COLORS);
-    // if (loading)
-    //     return (
-    //         <div className={classes.load}>
-    //             <Loading/>
-    //         </div>
-    //     );
+    const dispatch = useDispatch();
+    const userId = JSON.parse(localStorage.getItem('profile')).result._id ||
+        JSON.parse(localStorage.getItem('profile')).result.googleId;
+    console.log('id', userId)
+    const colors = useSelector((state => state.colors))
+
+    useEffect(() => {
+        dispatch(getColors(userId))
+    }, []);
 
     return (
         <div className={classes.colorSelector}>
@@ -41,7 +45,7 @@ const ColorPicker = () => {
                    onClick={() =>console.log(color.name)} style={{background: color.value}}>
              </div>)
             )}
-            <AddNewColor addColor={setColors} colors={colors} />
+            <AddNewColor colors={colors} />
         </div>
     );
 }

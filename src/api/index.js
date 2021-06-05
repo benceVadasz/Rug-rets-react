@@ -14,5 +14,11 @@ export const fetchShapes = () => API.get('/shapes');
 export const uploadShape = (shape) => API.post('/shapes', shape);
 export const deleteShape = (id) => API.delete(`/shapes/${id}`);
 
+export const fetchColors = (userId) => API.get(`/colors/${userId}`);
+export const uploadColor = (color) => API.post('/colors', color);
+export const deleteColor = (id) => API.delete(`/colors/id=${id}`);
+
+
+
 export const signIn = (formData) => API.post('/user/signIn', formData);
 export const signUp = (formData) => API.post('/user/signUp', formData);

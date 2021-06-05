@@ -4,11 +4,13 @@ import AddIcon from '@material-ui/icons/Add';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import {saveColor} from '../data/colors.js'
-
+import { useDispatch } from "react-redux";
+import { uploadColor } from "../actions/colors";
 
 
 const AddNewColor = ({addColor, colors}) => {
-    const MySwal = withReactContent(Swal)
+    const MySwal = withReactContent(Swal);
+    const dispatch = useDispatch();
     const useStyles = makeStyles(() => ({
         color: {
             display: 'flex',
@@ -27,7 +29,7 @@ const AddNewColor = ({addColor, colors}) => {
         }
     }));
     const classes = useStyles();
-
+    const userId = JSON.parse(localStorage.getItem('profile')).result._id;
 
     const addNewColor = () => {
         MySwal.fire({
@@ -40,9 +42,8 @@ const AddNewColor = ({addColor, colors}) => {
             confirmButtonText: 'Add',
             showCancelButton: true,
         }).then((hexCode) => {
-            addColor([...colors, {"name": "", "value": hexCode.value}])
+            dispatch(uploadColor({"name": "", "value": hexCode.value, userId}))
             // todo: ask Adam to make this work
-            saveColor( "", hexCode.value)
         })
         // if (loading)
 //     return (
