@@ -23,11 +23,12 @@ export const uploadColor = (colorData) => async (dispatch) => {
     }
 };
 
-export const deleteColor = (id) => async (dispatch) => {
+export const deleteColor = (value) => async (dispatch) => {
+    console.log(value)
     try {
-        await api.deleteColor(id);
+        await api.deleteColor(value);
 
-        dispatch({ type: DELETE, payload: id });
+        dispatch({ type: DELETE, payload: value });
     } catch (error) {
         console.log(error.message);
     }

@@ -16,7 +16,7 @@ export const deleteShape = (id) => API.delete(`/shapes/${id}`);
 
 export const fetchColors = (userId) => API.get(`/colors/${userId}`);
 export const uploadColor = (color) => API.post('/colors', color);
-export const deleteColor = (id) => API.delete(`/colors/id=${id}`);
+export const deleteColor = (id) => API.delete(`/colors/${id}`);
 
 
 

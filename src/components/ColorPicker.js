@@ -1,9 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import {makeStyles} from '@material-ui/core/styles';
-import {COLORS} from '../data/colors';
 import AddNewColor from "./AddNewColor";
 import {useDispatch, useSelector} from "react-redux";
-import { getColors } from "../actions/colors";
+import {getColors} from "../actions/colors";
 
 
 const ColorPicker = () => {
@@ -42,7 +41,7 @@ const ColorPicker = () => {
         <div className={classes.colorSelector}>
             {colors.map((color) =>
              (<div key={color.value} title={color.name} className={classes.color}
-                   onClick={() =>console.log(color.name)} style={{background: color.value}}>
+                   onClick={() => console.log(color._id)} style={{background: color.value}}>
              </div>)
             )}
             <AddNewColor colors={colors} />
