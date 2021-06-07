@@ -2,9 +2,14 @@ import React, {useState} from "react";
 import {makeStyles} from '@material-ui/core/styles';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
+import {useDispatch, useSelector} from "react-redux";
+import {setShapeSelectionType} from "../actions/shapes";
 
 const DesignTypeSwitcher = () => {
-    const [types, setTypes] = React.useState('pre-made');
+    const dispatch = useDispatch();
+    const shapeSelection = useSelector((state => state.shapeSelection));
+    const currentColorSelection = shapeSelection.length > 0 ? shapeSelection : 'pre-made';
+    const [types, setTypes] = React.useState(currentColorSelection);
     const useStyles = makeStyles(() => ({
         switcher: {
             height: '50%',
@@ -13,8 +18,8 @@ const DesignTypeSwitcher = () => {
     }));
     const classes = useStyles();
     const handleTypes = (event, newSelection) => {
-        // todo: save selection in redux store so shape picker can update
         setTypes(newSelection);
+        dispatch(setShapeSelectionType(newSelection))
     };
     // if (loading)
     //     return (

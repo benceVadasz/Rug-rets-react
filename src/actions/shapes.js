@@ -1,4 +1,4 @@
-import {FETCH_ALL, CREATE, DELETE} from '../constants/actionTypes';
+import {FETCH_ALL, CREATE, DELETE, SET_SHAPE_TYPE} from '../constants/actionTypes';
 import * as api from '../api';
 
 export const getShapes = () => async (dispatch) => {
@@ -26,6 +26,14 @@ export const deleteShape = (id) => async (dispatch) => {
         await api.deleteShape(id);
 
         dispatch({ type: DELETE, payload: id });
+    } catch (error) {
+        console.log(error.message);
+    }
+};
+
+export const setShapeSelectionType = (type) => async (dispatch) => {
+    try {
+        dispatch({type: SET_SHAPE_TYPE, payload: type});
     } catch (error) {
         console.log(error.message);
     }
