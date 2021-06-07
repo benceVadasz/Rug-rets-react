@@ -5,6 +5,7 @@ import DesignTypeSwitcher from "../components/DesignTypeSwitcher";
 import ButtonGroup from "../components/ButtonGroup";
 import ShapePicker from "../components/ShapePicker";
 import Canvas from "../components/Canvas";
+import ColorTypeSwitcher from "../components/ColorTypeSwitcher";
 
 
 const Design = () => {
@@ -40,7 +41,10 @@ const Design = () => {
         colorPicker: {
             overflow: 'scroll',
             boxShadow: '0 1em 1em -1em rgba(0, 0, 0, .25)',
-            gridArea: '4 / 5 / 9 / 6'
+            gridArea: '5 / 5 / 9 / 6'
+        },
+        colorBtnContainer: {
+            gridArea: '4 / 5 / 5 / 6'
         },
         buttonContainer: {
             margin: '0 auto',
@@ -70,6 +74,9 @@ const Design = () => {
             </div>
             <div className={classes.canvas}>
                 <Canvas/>
+            </div>
+            <div className={classes.colorBtnContainer}>
+                <ColorTypeSwitcher/>
             </div>
             <div className={classes.colorPicker}>
                 <ColorPicker/>
