@@ -1,4 +1,4 @@
-import { FETCH_ALL, CREATE, DELETE } from '../constants/actionTypes';
+import {CREATE, DELETE, FETCH_ALL} from '../constants/actionTypes';
 
 import * as api from '../api/index.js';
 
@@ -29,6 +29,14 @@ export const deleteColor = (value) => async (dispatch) => {
         await api.deleteColor(value);
 
         dispatch({ type: DELETE, payload: value });
+    } catch (error) {
+        console.log(error.message);
+    }
+};
+
+export const colorExists = (hex) => async (dispatch) => {
+    try {
+        return await api.checkIfColorExists(hex)
     } catch (error) {
         console.log(error.message);
     }

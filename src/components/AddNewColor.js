@@ -3,12 +3,11 @@ import {makeStyles} from '@material-ui/core/styles';
 import AddIcon from '@material-ui/icons/Add';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import {saveColor} from '../data/colors.js'
 import {useDispatch} from "react-redux";
-import {uploadColor} from "../actions/colors";
+import {colorExists, uploadColor} from "../actions/colors";
 
 
-const AddNewColor = ({addColor, colors}) => {
+const AddNewColor = () => {
     const MySwal = withReactContent(Swal);
     const dispatch = useDispatch();
     const useStyles = makeStyles(() => ({
@@ -31,6 +30,7 @@ const AddNewColor = ({addColor, colors}) => {
     const classes = useStyles();
     const userId = JSON.parse(localStorage.getItem('profile')).result._id;
 
+
     const addNewColor = () => {
         MySwal.fire({
             title: 'Add new Color',
@@ -43,14 +43,27 @@ const AddNewColor = ({addColor, colors}) => {
             showCancelButton: true,
         }).then((hexCode) => {
             const RegExp = /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i;
-            console.log(RegExp.test(hexCode.value))
             if (hexCode?.value?.length > 0 && !RegExp.test(hexCode.value)) {
                 Swal.fire({
                     title: 'Hex code invalid',
                     confirmButtonText: 'Ok',
                 }).then(() => addNewColor())
             } else {
-                if (hexCode?.value?.length > 0) dispatch(uploadColor({"name": "", "value": hexCode.value, userId}))
+                if (hexCode?.value?.length > 0) {
+                    dispatch(colorExists({value: hexCode.value}))
+                        .then((res) => {
+                            if (res.data.matches.length === 0) {
+                                dispatch(uploadColor({"name": "", "value": hexCode.value, userId}))
+                            }
+                            else {
+                                Swal.fire({
+                                    title: 'Color already exists',
+                                    confirmButtonText: 'Ok',
+                                }).then(() => addNewColor())
+                            }
+                        });
+
+                }
             }
             // todo: ask Adam to make this work
         })
