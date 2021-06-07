@@ -1,4 +1,4 @@
-import {FETCH_ALL, CREATE, SET_SHAPE_TYPE} from '../constants/actionTypes';
+import {FETCH_ALL, CREATE, SET_SHAPE_TYPE, SET_SHAPE} from '../constants/actionTypes';
 // eslint-disable-next-line import/no-anonymous-default-export
 export const shapes = (shapes = [], action) => {
     switch (action.type) {
@@ -17,5 +17,14 @@ export const shapeSelection = (shapeSelection = [], action) => {
             return shapeSelection = action.payload;
         default:
             return shapeSelection;
+    }
+}
+
+export const shape = (shape = [], action) => {
+    switch (action.type) {
+        case SET_SHAPE:
+            return shape = action.payload;
+        default:
+            return shape;
     }
 }

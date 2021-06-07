@@ -16,7 +16,7 @@ const ShapeAdder = () => {
 
     const useStyles = makeStyles(() => ({
         paper: {
-            width: 250,
+            minWidth: 250,
             height: 130,
             borderRadius: 5,
             cursor: 'pointer',

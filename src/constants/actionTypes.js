@@ -6,3 +6,4 @@ export const LOGOUT = 'LOGOUT';
 export const SET = 'SET';
 export const SET_TYPE = 'SET_TYPE';
 export const SET_SHAPE_TYPE = 'SET_SHAPE_TYPE';
+export const SET_SHAPE = 'SET_SHAPE';

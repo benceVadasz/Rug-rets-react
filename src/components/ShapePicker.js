@@ -2,6 +2,8 @@ import React from 'react';
 import { useSelector } from "react-redux";
 import {makeStyles} from '@material-ui/core/styles';
 import ShapeAdder from "./ShapeAdder";
+import Brush from '../assets/rugShapes/brush.js'
+import Shape from "./Shape";
 
 
 const ShapePicker = () => {
@@ -13,6 +15,7 @@ const ShapePicker = () => {
         colorSelector: {
             display: 'flex',
             alignItems: 'flex-start',
+            overflow: 'scroll'
         }
     }));
     const classes = useStyles();
@@ -21,6 +24,7 @@ const ShapePicker = () => {
     return (
         <div className={classes.colorSelector}>
             {shapeSelection === 'custom' ? <ShapeAdder/> : null}
+            <Shape name={'brush'}/>
         </div>
     );
 }

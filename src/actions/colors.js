@@ -26,7 +26,6 @@ export const uploadColor = (colorData) => async (dispatch) => {
 
         dispatch({type: CREATE, payload: data});
     } catch (error) {
-        console.log('in catch')
         console.log(error.message);
     }
 };

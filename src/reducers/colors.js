@@ -12,7 +12,6 @@ export const colors = (colors = [], action) => {
 }
 
 export const color = (color = [], action) => {
-    console.log('here selection')
     switch (action.type) {
         case SET:
             return color = action.payload;

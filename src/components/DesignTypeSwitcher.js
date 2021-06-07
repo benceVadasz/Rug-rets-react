@@ -8,14 +8,15 @@ import {setShapeSelectionType} from "../actions/shapes";
 const DesignTypeSwitcher = () => {
     const dispatch = useDispatch();
     const shapeSelection = useSelector((state => state.shapeSelection));
-    const currentColorSelection = shapeSelection.length > 0 ? shapeSelection : 'pre-made';
-    const [types, setTypes] = React.useState(currentColorSelection);
+    const currentShapeSelection = shapeSelection.length > 0 ? shapeSelection : 'pre-made';
+    const [types, setTypes] = useState(currentShapeSelection);
     const useStyles = makeStyles(() => ({
         switcher: {
             height: '50%',
             boxShadow: 'rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px',
         }
     }));
+    console.log(shapeSelection)
     const classes = useStyles();
     const handleTypes = (event, newSelection) => {
         setTypes(newSelection);

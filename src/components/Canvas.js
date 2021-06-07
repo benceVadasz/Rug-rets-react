@@ -2,11 +2,12 @@ import React, {useState} from 'react';
 import { useSelector } from "react-redux";
 import {makeStyles} from '@material-ui/core/styles';
 import brush from '../assets/brush.svg';
-import Flower from "../assets/flower";
+import Rug from "./Rug";
+import Brush from '../assets/rugShapes/brush'
 
 const Canvas = () => {
 
-    const shapes = useSelector((state => state.shapes))
+    const shape = useSelector((state => state.shape))
     const color = useSelector((state => state.color))
     const [fillColors, setFillColors] = useState(Array(22).fill('white'))
 
@@ -28,7 +29,8 @@ const Canvas = () => {
 
     return (
         <div className={classes.canvas}>
-            <Flower onFill={fill} fillColors={fillColors}/>
+
+            {/*<Rug file={shape} onFill={fill} fillColors={fillColors}/>*/}
         </div>
     );
 }
