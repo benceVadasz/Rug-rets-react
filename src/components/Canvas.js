@@ -1,14 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useSelector } from "react-redux";
 import {makeStyles} from '@material-ui/core/styles';
-import test from '../assets/tool-box.svg';
 import brush from '../assets/brush.svg';
+import Flower from "../assets/flower";
 
 const Canvas = () => {
 
     const shapes = useSelector((state => state.shapes))
     const color = useSelector((state => state.color))
-    console.log(color)
+    const [fillColors, setFillColors] = useState(Array(22).fill('white'))
+
 
     const useStyles = makeStyles(() => ({
         canvas: {
@@ -19,9 +20,15 @@ const Canvas = () => {
     const classes = useStyles();
     // todo: check what the design type selection is in redux store | fetch it in useEffect
 
+    const fill = (i) => {
+        let newFillColors = fillColors.slice(0)
+        newFillColors[i] = color
+        setFillColors(newFillColors)
+    }
+
     return (
         <div className={classes.canvas}>
-            <img src={test} />
+            <Flower onFill={fill} fillColors={fillColors}/>
         </div>
     );
 }

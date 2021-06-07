@@ -32,8 +32,7 @@ const Design = () => {
         canvas: {
             gridArea: '4 / 1 / 10 / 5',
             backgroundColor: '#e5e5f7',
-            opacity: 0.5,
-            backgroundImage:  'linear-gradient(#D1CFC5 1px, transparent 1px), linear-gradient(to right, #D1CFC5 1px, #F5F3E7 1px)',
+            backgroundImage:  'linear-gradient(rgba(209,207,197,0.5) 1px, transparent 1px), linear-gradient(to right, rgba(209,207,197,0.5) 1px, rgba(245,243,231,0.5) 1px)',
             backgroundSize: '20px 20px',
             overflow: 'scroll'
 
