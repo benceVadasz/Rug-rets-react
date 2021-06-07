@@ -42,10 +42,6 @@ export let COLORS = [
     "name": "skyblue",
     "value": "#a7bed3"
   },
-  {
-    "name": "smth",
-    "value": "#invalid"
-  }
 ]
 
 export let saveColor = (name="", value) => {

@@ -3,6 +3,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import AddNewColor from "./AddNewColor";
 import {useDispatch, useSelector} from "react-redux";
 import {setColor, getColors} from "../actions/colors";
+import {COLORS} from "../data/colors";
 
 
 const ColorPicker = () => {
@@ -31,7 +32,10 @@ const ColorPicker = () => {
     const userId = JSON.parse(localStorage.getItem('profile')).result._id ||
         JSON.parse(localStorage.getItem('profile')).result.googleId;
     console.log('id', userId)
-    const colors = useSelector((state => state.colors))
+    const preMadeColors = useSelector((state => state.colors))
+    const colorSelection = useSelector((state => state.colorSelection))
+
+    let colors = colorSelection === 'custom' ? preMadeColors : COLORS;
 
     useEffect(() => {
         dispatch(getColors(userId))
@@ -39,7 +43,6 @@ const ColorPicker = () => {
 
     const selectColor = (value) => {
         dispatch(setColor(value))
-
     }
 
     return (
@@ -49,7 +52,7 @@ const ColorPicker = () => {
                       onClick={() => selectColor(color.value)} style={{background: color.value}}>
                 </div>)
             )}
-            <AddNewColor colors={colors}/>
+            {colorSelection === 'custom' ? <AddNewColor colors={colors}/> : null}
         </div>
     );
 }
