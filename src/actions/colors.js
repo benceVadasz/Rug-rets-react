@@ -1,12 +1,20 @@
-import {CREATE, DELETE, FETCH_ALL} from '../constants/actionTypes';
+import {CREATE, DELETE, FETCH_ALL, SET} from '../constants/actionTypes';
 
 import * as api from '../api/index.js';
 
-export const getColors = (userId) => async (    dispatch) => {
+export const setColor = (value) => async (dispatch) => {
     try {
-        const { data } = await api.fetchColors(userId);
+        dispatch({type: SET, payload: value});
+    } catch (e) {
+        console.log(e)
+    }
+}
 
-        dispatch({ type: FETCH_ALL, payload: data });
+export const getColors = (userId) => async (dispatch) => {
+    try {
+        const {data} = await api.fetchColors(userId);
+
+        dispatch({type: FETCH_ALL, payload: data});
     } catch (error) {
         console.log(error.message);
     }
@@ -14,9 +22,9 @@ export const getColors = (userId) => async (    dispatch) => {
 
 export const uploadColor = (colorData) => async (dispatch) => {
     try {
-        const { data } = await api.uploadColor(colorData);
+        const {data} = await api.uploadColor(colorData);
 
-        dispatch({ type: CREATE, payload: data });
+        dispatch({type: CREATE, payload: data});
     } catch (error) {
         console.log('in catch')
         console.log(error.message);
@@ -28,7 +36,7 @@ export const deleteColor = (value) => async (dispatch) => {
     try {
         await api.deleteColor(value);
 
-        dispatch({ type: DELETE, payload: value });
+        dispatch({type: DELETE, payload: value});
     } catch (error) {
         console.log(error.message);
     }

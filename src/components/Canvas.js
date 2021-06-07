@@ -7,6 +7,8 @@ import brush from '../assets/brush.svg';
 const Canvas = () => {
 
     const shapes = useSelector((state => state.shapes))
+    const color = useSelector((state => state.color))
+    console.log(color)
 
     const useStyles = makeStyles(() => ({
         canvas: {

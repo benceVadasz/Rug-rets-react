@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {makeStyles} from '@material-ui/core/styles';
-import {Button, Paper} from "@material-ui/core";
+import {Button} from "@material-ui/core";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import AddIcon from "@material-ui/icons/Add";
 import Typography from "@material-ui/core/Typography";
-import { uploadShape } from "../actions/shapes";
 
 const MySwal = withReactContent(Swal)
 
@@ -50,7 +49,6 @@ const ShapeAdder = () => {
             confirmButtonText: 'Upload',
             showCancelButton: true,
         }).then((file) => {
-            // todo: ask Adam how to add svg
             console.log(file?.contentDocument)
         })
     };

@@ -65,7 +65,6 @@ const AddNewColor = () => {
 
                 }
             }
-            // todo: ask Adam to make this work
         })
         // if (loading)
 //     return (
