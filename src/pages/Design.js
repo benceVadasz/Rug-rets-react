@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {makeStyles} from '@material-ui/core/styles';
 import ColorPicker from "../components/ColorPicker";
 import DesignTypeSwitcher from "../components/DesignTypeSwitcher";
