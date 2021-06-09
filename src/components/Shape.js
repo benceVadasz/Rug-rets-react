@@ -1,13 +1,11 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import {Button} from "@material-ui/core";
-import Brush from "../assets/rugShapes/brush";
 import {useDispatch} from "react-redux";
 import {setShape} from "../actions/shapes";
+import {PATH_NUMBERS} from "../constants/numOfPathsOfShapes";
 
-
-const Shape = ({name}) => {
-
+const Shape = ({name, file}) => {
     const useStyles = makeStyles(() => ({
         paper: {
             minWidth: 250,
@@ -25,18 +23,24 @@ const Shape = ({name}) => {
             justifyContent: 'space-around',
             alignItems: 'center',
         },
+        shapeImg: {
+            width: 150,
+            height: 120
+        }
     }));
     const classes = useStyles();
     const dispatch = useDispatch();
 
     const selectShape = (name) => {
-        dispatch(setShape(name))
+        const colorArray = Array(PATH_NUMBERS[name]).fill('white')
+        dispatch(setShape(name, colorArray))
     }
+
 
     return (
         <Button onClick={() => selectShape(name)} className={classes.paper}>
             <div className={classes.flexBox}>
-                <Brush/>
+               <img src={file} className={classes.shapeImg} />
             </div>
         </Button>
     );

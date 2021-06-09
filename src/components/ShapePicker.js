@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from "react-redux";
 import {makeStyles} from '@material-ui/core/styles';
 import ShapeAdder from "./ShapeAdder";
-import Brush from '../assets/rugShapes/brush.js'
+import {SHAPE_OBJECT} from '../helpers/shapeImports'
 import Shape from "./Shape";
 
 
@@ -24,7 +24,10 @@ const ShapePicker = () => {
     return (
         <div className={classes.colorSelector}>
             {shapeSelection === 'custom' ? <ShapeAdder/> : null}
-            <Shape name={'brush'}/>
+            {Object.keys(SHAPE_OBJECT).map(function(key) {
+                console.log(SHAPE_OBJECT[key])
+                return <Shape name={key} key={key} file={SHAPE_OBJECT[key]} />
+            })}
         </div>
     );
 }
