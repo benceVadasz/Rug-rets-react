@@ -14,7 +14,8 @@ export const colors = (colors = [], action) => {
 export const color = (color = [], action) => {
     switch (action.type) {
         case SET:
-            return color = action.payload;
+            color = action.payload;
+            return color;
         default:
             return color;
     }
@@ -23,7 +24,8 @@ export const color = (color = [], action) => {
 export const colorSelection = (colorSelection = [], action) => {
     switch (action.type) {
         case SET_TYPE:
-            return colorSelection = action.payload;
+            colorSelection = action.payload;
+            return colorSelection;
         default:
             return colorSelection;
     }
