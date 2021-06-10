@@ -30,7 +30,7 @@ const Canvas = () => {
     }
 
     return (
-        <div className={classes.canvas}>
+        <div className={`${classes.canvas} canvas`}>
             <Rug file={shape} onFill={fill} fillColors={fillColors}/>
         </div>
     );

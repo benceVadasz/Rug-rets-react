@@ -49,3 +49,7 @@
 .white {
   color: white !important;
 }
+
+.canvas {
+  cursor: pointer;
+}
