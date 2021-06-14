@@ -2,7 +2,7 @@ import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import {Button} from "@material-ui/core";
 import {useDispatch} from "react-redux";
-import {setShape} from "../actions/shapes";
+import {setColorArray, setShape} from "../actions/shapes";
 import {PATH_NUMBERS} from "../constants/numOfPathsOfShapes";
 
 const Shape = ({name, file}) => {
@@ -33,7 +33,8 @@ const Shape = ({name, file}) => {
 
     const selectShape = (name) => {
         const colorArray = Array(PATH_NUMBERS[name]).fill('white')
-        dispatch(setShape(name, colorArray))
+        dispatch(setShape(name))
+        dispatch(setColorArray(colorArray))
     }
 
 

@@ -7,6 +7,9 @@ import {colorSelection} from './colors';
 import {shapeSelection} from './shapes';
 import {shape} from './shapes';
 import {shapeColorArray} from './shapes';
+import {designs} from "./designs";
 
-export const reducers = combineReducers({ shapes, auth, colors, color, colorSelection, shapeSelection, shape,
-                                            shapeColorArray });
+export const reducers = combineReducers({
+    shapes, auth, colors, color, colorSelection,
+    shapeSelection, shape, shapeColorArray,
+    designs});

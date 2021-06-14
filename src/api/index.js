@@ -11,7 +11,6 @@ API.interceptors.request.use((req) => {
 })
 
 export const fetchShapes = () => API.get('/shapes');
-
 export const uploadShape = (shape) => API.post('/shapes', shape);
 export const deleteShape = (id) => API.delete(`/shapes/${id}`);
 
@@ -20,6 +19,8 @@ export const uploadColor = (color) => API.post('/colors', color);
 export const deleteColor = (id) => API.delete(`/colors/${id}`);
 export const checkIfColorExists = (hex) => API.post('/colors/check', hex);
 
+export const fetchDesigns = (userId) => API.get(`/designs/${userId}`);
+export const saveDesign = (designData) => API.post('/designs', designData);
 
 export const signIn = (formData) => API.post('/user/signIn', formData);
 export const signUp = (formData) => API.post('/user/signUp', formData);

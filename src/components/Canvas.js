@@ -1,17 +1,15 @@
 import React, {useState} from 'react';
-import { useSelector } from "react-redux";
+import {useSelector} from "react-redux";
 import {makeStyles} from '@material-ui/core/styles';
-// import brush from '../assets/brush.svg';
 import Rug from "./Rug";
+import {useDispatch} from "react-redux";
+import {setColorArray} from "../actions/shapes";
 
 const Canvas = () => {
-
+    const dispatch = useDispatch();
     const shape = useSelector((state => state.shape))
     const color = useSelector((state => state.color))
     const colorArray = useSelector((state => state.shapeColorArray))
-    const [fillColors, setFillColors] = useState(colorArray)
-    console.log(fillColors)
-
 
     const useStyles = makeStyles(() => ({
         canvas: {
@@ -23,15 +21,27 @@ const Canvas = () => {
     // todo: check what the design type selection is in redux store | fetch it in useEffect
 
     const fill = (i) => {
-        console.log(color)
-        let newFillColors = fillColors.slice(0)
-        newFillColors[i] = color
-        setFillColors(newFillColors)
+        const newFillColors = add(i);
+        dispatch(setColorArray(newFillColors))
+    }
+
+    const add = (index) => {
+        const fin = []
+        for (let i = 0; i < colorArray.length; i++) {
+            if (i === index) {
+                fin.push(color)
+            } else if (colorArray[i] === 'white') {
+                fin.push('white')
+            } else {
+                fin.push(colorArray[i])
+            }
+        }
+        return fin;
     }
 
     return (
         <div className={`${classes.canvas} canvas`}>
-            <Rug file={shape} onFill={fill} fillColors={fillColors}/>
+            {colorArray.length>0?<Rug file={shape} onFill={fill} fillColors={colorArray}/>:null}
         </div>
     );
 }

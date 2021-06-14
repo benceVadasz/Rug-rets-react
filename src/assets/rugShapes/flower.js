@@ -9,7 +9,7 @@ export default function flower({onFill, fillColors}) {
             <g id="layer2" transform="translate(114 66)" display="inline">
                 <g id="svg_27" transform="matrix(0.849029 0 0 0.849029 65.2874 25.9633)">
                     <path id="svg_28" onClick={() => onFill(0)} fill={fillColors[0]}
-                          fill-rule="evenodd" stroke="#000000" stroke-width="8"
+                          fillRule="evenodd" stroke="#000000" stroke-width="8"
                           d="m335.662872,237.986206c29.202484,-24.342041 60.58606,-230.559322 9.385345,-295.979031c-73.760437,41.40971 -167.217957,217.611736 -116.882584,287.760891c50.335403,70.149139 107.90538,6.715332 107.497238,8.21814z"/>
                     <path id="svg_29" onClick={() => onFill(1)} fill={fillColors[1]}
                           fill-rule="evenodd" stroke="#000000" stroke-width="8"

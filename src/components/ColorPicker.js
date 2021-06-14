@@ -31,7 +31,6 @@ const ColorPicker = () => {
     const dispatch = useDispatch();
     const userId = JSON.parse(localStorage.getItem('profile')).result._id ||
         JSON.parse(localStorage.getItem('profile')).result.googleId;
-    console.log('id', userId)
     const preMadeColors = useSelector((state => state.colors))
     const colorSelection = useSelector((state => state.colorSelection))
 

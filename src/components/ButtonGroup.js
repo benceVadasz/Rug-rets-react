@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import {makeStyles} from '@material-ui/core/styles';
 import {Button} from "@material-ui/core";
-
+import {useDispatch, useSelector} from "react-redux";
+import {saveDesign} from "../actions/designs";
 
 const ButtonGroup = () => {
     const useStyles = makeStyles(() => ({
@@ -22,6 +23,8 @@ const ButtonGroup = () => {
         }
     }));
     const classes = useStyles();
+
+    const dispatch = useDispatch();
     // if (loading)
     //     return (
     //         <div className={classes.load}>
@@ -29,12 +32,32 @@ const ButtonGroup = () => {
     //         </div>
     //     );
 
+    const shape = useSelector((state => state.shape))
+    const initColors = useSelector((state => state.shapeColorArray))
+    const save = () => {
+        const colors = replaceEmptyValues(initColors)
+        dispatch(saveDesign({shape, colors}))
+    }
+
+    const replaceEmptyValues = colorList => {
+        const fin = []
+        for (let colorCode of colorList) {
+            if (!colorCode) {
+                fin.push("white")
+            }
+            else {
+                fin.push(colorCode)
+            }
+        }
+        return fin
+    }
+
     return (
         <>
             <Button variant="contained" className={classes.orderBtn + ' lower-case white'}>
                 Order
             </Button>
-            <Button variant="contained" className={classes.saveBtn + ' lower-case'}>
+            <Button onClick={save} variant="contained" className={classes.saveBtn + ' lower-case'}>
                 Save
             </Button>
         </>

@@ -1,4 +1,5 @@
 export const CREATE = 'CREATE';
+export const CREATE_DESIGN = 'CREATE_DESIGN';
 export const DELETE = 'DELETE';
 export const FETCH_ALL = 'FETCH_ALL';
 export const AUTH = 'AUTH';

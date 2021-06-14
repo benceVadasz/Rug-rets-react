@@ -39,9 +39,17 @@ export const setShapeSelectionType = (type) => async (dispatch) => {
     }
 };
 
-export const setShape = (name, colorArray) => async (dispatch) => {
+export const setShape = (name) => async (dispatch) => {
     try {
         dispatch({type: SET_SHAPE, payload: name});
+    } catch (error) {
+        console.log(error.message);
+    }
+};
+
+
+export const setColorArray = (colorArray) => async (dispatch) => {
+    try {
         dispatch({type: SET_SHAPE_COLOR_ARRAY, payload: colorArray});
     } catch (error) {
         console.log(error.message);
