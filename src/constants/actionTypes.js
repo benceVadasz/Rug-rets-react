@@ -9,3 +9,5 @@ export const SET_TYPE = 'SET_TYPE';
 export const SET_SHAPE_TYPE = 'SET_SHAPE_TYPE';
 export const SET_SHAPE = 'SET_SHAPE';
 export const SET_SHAPE_COLOR_ARRAY = 'SET_SHAPE_COLOR_ARRAY';
+export const TOGGLE_ALERT_NEEDED = 'TOGGLE_ALERT_NEEDED';
+export const SET_ALERT_STATE = 'SET_ALERT_STATE';

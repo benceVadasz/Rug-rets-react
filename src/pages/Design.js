@@ -6,6 +6,9 @@ import ButtonGroup from "../components/ButtonGroup";
 import ShapePicker from "../components/ShapePicker";
 import Canvas from "../components/Canvas";
 import ColorTypeSwitcher from "../components/ColorTypeSwitcher";
+import {SuccessAlert} from "../components/Alert";
+import {useSelector} from "react-redux";
+import {Zoom} from "../components/Zoom";
 
 
 const Design = () => {
@@ -32,7 +35,7 @@ const Design = () => {
         canvas: {
             gridArea: '4 / 1 / 10 / 5',
             backgroundColor: '#e5e5f7',
-            backgroundImage:  'linear-gradient(rgba(209,207,197,0.5) 1px, transparent 1px), linear-gradient(to right, rgba(209,207,197,0.5) 1px, rgba(245,243,231,0.5) 1px)',
+            backgroundImage: 'linear-gradient(rgba(209,207,197,0.5) 1px, transparent 1px), linear-gradient(to right, rgba(209,207,197,0.5) 1px, rgba(245,243,231,0.5) 1px)',
             backgroundSize: '20px 20px',
             overflow: 'scroll'
 
@@ -52,10 +55,14 @@ const Design = () => {
             justifyContent: 'space-around',
             alignItems: 'center',
             gridArea: '9 / 5 / 10 / 6',
+        },
+        zoom: {
+            gridArea: '1 / 5 / 2 / 6'
         }
 
     }));
     const classes = useStyles();
+    const isAlertNeeded = useSelector((state => state.alertNeeded))
     // if (loading)
     //     return (
     //         <div className={classes.load}>
@@ -66,8 +73,14 @@ const Design = () => {
     return (
         <div className={classes.designContainer}>
             <div className={classes.designTypesContainer}>
-                <DesignTypeSwitcher/>
+                {!isAlertNeeded ?
+                    <DesignTypeSwitcher/>
+
+                    : <SuccessAlert/>}
             </div>
+            {!isAlertNeeded ? <div className={classes.zoom}>
+                <Zoom/>
+            </div> : null}
             <div className={classes.shapePicker}>
                 <ShapePicker/>
             </div>

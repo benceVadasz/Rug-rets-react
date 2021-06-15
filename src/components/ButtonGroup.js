@@ -3,6 +3,8 @@ import {makeStyles} from '@material-ui/core/styles';
 import {Button} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
 import {saveDesign} from "../actions/designs";
+import {toggleAlertNeeded} from '../actions/alert'
+import {setAlertState} from "../actions/alert";
 
 const ButtonGroup = () => {
     const useStyles = makeStyles(() => ({
@@ -35,8 +37,19 @@ const ButtonGroup = () => {
     const shape = useSelector((state => state.shape))
     const initColors = useSelector((state => state.shapeColorArray))
     const save = () => {
-        const colors = replaceEmptyValues(initColors)
-        dispatch(saveDesign({shape, colors}))
+        if (shape.length > 0) {
+            const colors = replaceEmptyValues(initColors)
+            dispatch(saveDesign({shape, colors}))
+            dispatch(setAlertState({text: "Your shape has been successfully saved!", severity: 'success'}))
+            dispatch(toggleAlertNeeded())
+            closeAlertIn5()
+        }
+    }
+
+    const closeAlertIn5 = () => {
+        setTimeout(() => {
+            dispatch(toggleAlertNeeded())
+        }, 5000)
     }
 
     const replaceEmptyValues = colorList => {
