@@ -8,21 +8,24 @@ import {setColorArray} from "../actions/shapes";
 const Canvas = () => {
     const dispatch = useDispatch();
     const shape = useSelector((state => state.shape))
-    const color = useSelector((state => state.color))
+    const color = useSelector((state => state.color));
+    const colorChosen = color.length > 0;
     const colorArray = useSelector((state => state.shapeColorArray))
 
     const useStyles = makeStyles(() => ({
         canvas: {
             overflow: 'auto',
-            // cursor: `url('${brush}'), auto`,
+            cursor: colorChosen ? "pointer" : "",
         }
     }));
     const classes = useStyles();
     // todo: check what the design type selection is in redux store | fetch it in useEffect
 
     const fill = (i) => {
-        const newFillColors = add(i);
-        dispatch(setColorArray(newFillColors))
+        if (colorChosen) {
+            const newFillColors = add(i);
+            dispatch(setColorArray(newFillColors))
+        }
     }
 
     const add = (index) => {
@@ -40,7 +43,7 @@ const Canvas = () => {
     }
 
     return (
-        <div className={`${classes.canvas} canvas`}>
+        <div className={classes.canvas}>
             {colorArray.length>0?<Rug file={shape} onFill={fill} fillColors={colorArray}/>:null}
         </div>
     );

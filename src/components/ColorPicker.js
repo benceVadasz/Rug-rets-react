@@ -31,10 +31,11 @@ const ColorPicker = () => {
     const dispatch = useDispatch();
     const userId = JSON.parse(localStorage.getItem('profile')).result._id ||
         JSON.parse(localStorage.getItem('profile')).result.googleId;
-    const preMadeColors = useSelector((state => state.colors))
+    const customColors = useSelector((state => state.colors))
     const colorSelection = useSelector((state => state.colorSelection))
 
-    let colors = colorSelection === 'custom' ? preMadeColors : COLORS;
+    let colors = colorSelection === 'custom' ? customColors : COLORS;
+    console.log(colors)
 
     useEffect(() => {
         dispatch(getColors(userId))
