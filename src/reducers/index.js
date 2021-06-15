@@ -5,7 +5,7 @@ import {colors} from './colors';
 import {color} from './colors';
 import {colorSelection} from './colors';
 import {shapeSelection} from './shapes';
-import {alertNeeded} from './shapes';
+import {alertNeeded} from './alert';
 import {shape} from './shapes';
 import {shapeColorArray} from './shapes';
 import {alertState} from './alert';

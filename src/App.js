@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Design from "./pages/Design";
 import {useDispatch} from "react-redux";
 import { getShapes } from './actions/shapes'
+import Profile from "./pages/Profile";
 
 const App = () => {
     const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const App = () => {
                 <Route exact path="/register" children={<Register/>}/>
                 <Route exact path="/login" children={<Login/>}/>
                 <Route exact path="/design" children={<Design/>}/>
+                <Route exact path="/profile" children={<Profile/>}/>
             </Router>
         </div>
     );

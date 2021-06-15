@@ -5,7 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Collapse from '@material-ui/core/Collapse';
 import {useDispatch, useSelector} from "react-redux";
 import CloseIcon from '@material-ui/icons/Close';
-import {toggleAlertNeeded} from "../actions/shapes";
+import {toggleAlertNeeded} from "../actions/alert";
 
 const useStyles = makeStyles((theme) => ({
     root: {

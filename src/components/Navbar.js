@@ -10,7 +10,6 @@ import {Button} from '@material-ui/core';
 import {useDispatch} from "react-redux";
 import {LOGOUT} from "../constants/actionTypes";
 import { useHistory, useLocation } from 'react-router-dom';
-// import logo from '../assets/logo.png';
 
 
 
