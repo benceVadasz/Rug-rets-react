@@ -1,6 +1,6 @@
 import React from 'react';
-import {Container, Grid} from '@material-ui/core';
-import {ThemeProvider, createMuiTheme} from '@material-ui/core/styles';
+import {Container, Grid, Typography} from '@material-ui/core';
+import {createMuiTheme} from '@material-ui/core/styles';
 import {orange} from '@material-ui/core/colors';
 import ProfileMenu from '../components/ProfileMenu';
 import ProfilePersonalInfo from '../components/ProfilePersonalInfo';
@@ -11,12 +11,15 @@ import Orders from "../components/Orders";
 
 const classes = {
     container: {
-        padding: '20px 0',
+        padding: '20px 150px 0 120px',
         // maxWidth: "90%",
     },
     title: {
         color: '#7c88cc',
     },
+    bg: {
+        backgroundColor: '#EDEDE9'
+    }
 };
 
 const theme = createMuiTheme({
@@ -54,50 +57,23 @@ const theme = createMuiTheme({
 const Profile = () => {
 
     return (
-        <>
+        <div style={classes.bg}>
+            <Typography className="lower-case" variant="h4" color="primary" align="center">MY ACCOUNT</Typography>
             <Container maxWidth="lg" style={classes.container}>
                 <Grid container spacing={3} direction="row">
-                    {/* Profile menu */}
                     <Grid item xs={3}>
                         <ProfileMenu/>
                     </Grid>
 
                     <Grid item xs={9}>
-                        <Route
-                            exact
-                            path="/profile"
-                            render={(props) => (
-                                <>
-                                    <Grid container direction="column">
-                                        <Grid item xs={12}>
-                                            <ProfilePersonalInfo/>
-                                        </Grid>
-                                    </Grid>
-                                </>
-                            )}
-                        />
-                        <Route
-                            exact
-                            path="/profile/saved"
-                            render={(props) => (
-                                <>
-                                    <SavedDesigns {...props}/>
-                                </>
-                            )}
-                        />
-                        <Route
-                            exact
-                            path="/profile/orders"
-                            render={(props) => (
-                                <>
-                                    <Orders {...props}/>
-                                </>
-                            )}
-                        />
+                        {/*<Route exact path="/profile" children={<Profile/>}/>*/}
+                        <Route exact path="/profile/saved" children={<SavedDesigns/>}/>
+                        <Route exact path="/profile/orders" children={<Orders/>}/>
+
                     </Grid>
                 </Grid>
             </Container>
-        </>
+        </div>
     );
 }
 ;

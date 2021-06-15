@@ -46,7 +46,7 @@ const SavedDesigns = (props) => {
         <Paper elevation={3} style={classes.paper}>
             <Typography className={!isMobile ? classes.label : ''} variant={isMobile ? "h4" : "h2"} color="primary" align="center">Favorites</Typography>
             <Grid className={classes.favBox} container spacing={3} direction="row">
-
+                <h1>Saved</h1>
             </Grid>
         </Paper>
     )

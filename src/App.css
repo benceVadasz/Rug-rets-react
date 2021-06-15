@@ -46,10 +46,18 @@
   font-weight: 500 !important;
 }
 
+.grey {
+  color: #777777 !important;
+}
+
 .white {
   color: white !important;
 }
 
 .canvas {
   cursor: pointer;
+}
+
+.plus {
+  margin-top: 10px;
 }

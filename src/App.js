@@ -8,6 +8,7 @@ import Design from "./pages/Design";
 import {useDispatch} from "react-redux";
 import { getShapes } from './actions/shapes'
 import Profile from "./pages/Profile";
+import SavedDesigns from "./components/SavedDesigns";
 
 const App = () => {
     const dispatch = useDispatch();
