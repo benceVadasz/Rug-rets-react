@@ -153,10 +153,10 @@ const ProfilePersonalInfo = () => {
 
     return (
         <>
-            <Paper elevation={3} className={!isMobile ? classes.paper : classes.mobilePaper}>
+            <div className={!isMobile ? classes.paper : classes.mobilePaper}>
                 <div className={classes.title}>
-                    <Typography className={"lower-case"} variant="h5" color="primary" align="left">MY
-                        ACCOUNT</Typography>
+                    <Typography className={"lower-case"} variant="h5" color="primary" align="left">Account
+                        overview</Typography>
                 </div>
                 <div className={isMobile ? '' : classes.container}>
                     <Grid item xs={12}>
@@ -198,7 +198,7 @@ const ProfilePersonalInfo = () => {
                                    onChange={changePhone}/>
                     </Grid>
                 </div>
-            </Paper>
+            </div>
         </>
     )
 }

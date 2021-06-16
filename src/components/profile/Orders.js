@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
-import {Typography, Paper, Grid} from '@material-ui/core';
+import React, {useEffect} from 'react';
+import {makeStyles} from "@material-ui/core/styles";
 import {useTheme} from '@material-ui/core/styles';
 import {useMediaQuery} from '@material-ui/core';
 
-const classes = {
+const useStyles = makeStyles((theme) => ({
     paper: {
         padding: "20px",
         margin: "20px",
@@ -23,14 +23,14 @@ const classes = {
     label: {
         marginBottom: 50
     }
-}
+}));
 
 
-const SavedDesigns = (props) => {
-
+const Orders = (props) => {
+    const classes = useStyles();
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-
+    console.log('orders')
 
     useEffect(() => {
     }, []);
@@ -43,13 +43,8 @@ const SavedDesigns = (props) => {
     //     );
 
     return (
-        <Paper elevation={3} style={classes.paper}>
-            <Typography className={!isMobile ? classes.label : ''} variant={isMobile ? "h4" : "h2"} color="primary" align="center">Favorites</Typography>
-            <Grid className={classes.favBox} container spacing={3} direction="row">
-                <h1>Saved</h1>
-            </Grid>
-        </Paper>
+        <h1>Orders</h1>
     )
 }
 
-export default SavedDesigns;
+export default Orders;

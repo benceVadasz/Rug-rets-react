@@ -102,7 +102,7 @@ const Navbar = () => {
                                         </Button>
                                         <IconButton
                                             component={Link}
-                                            to="/profile"
+                                            to="/profile/account"
                                             aria-label="account of current user"
                                             aria-controls="menu-appbar"
                                             aria-haspopup="true"
